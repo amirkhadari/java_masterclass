@@ -2,48 +2,68 @@ package Inheritance;
 
 public class Vehicle {
 
-    private String color;
-    private int tyres;
-    private int headLight;
-    private int sideMirrors;
-    private int cc;
-    private int gears;
+    private String name;
+    private String size;
 
-    public Vehicle() {
-        this("White", 2, 1, 2, 100, 4);
+    private int currentVelocity;
+    private int currentDirection;
 
+    public Vehicle(){
+        this("Test", "L");
+    }
+    public Vehicle(String name, String size) {
+        this.name = name;
+        this.size = size;
+
+        this.currentDirection =0;
+        this.currentVelocity =0;
     }
 
-    public Vehicle(String color, int tyres, int headLight, int sideMirrors, int cc, int gears) {
-        this.color = color;
-        this.tyres = tyres;
-        this.headLight = headLight;
-        this.sideMirrors = sideMirrors;
-        this.cc = cc;
-        this.gears = gears;
+    public void steer(int direction){
+        this.currentDirection += direction;
+        System.out.println("Vehicle.steer(): Steering at "+ currentDirection+" degrees.");
     }
 
-    public String getColor() {
-        return color;
+    public void move(int direction, int velocity){
+        currentDirection = direction;
+        currentVelocity = velocity;
+
+        System.out.println("Vehicle.move(): Moving at "+currentVelocity+" in direction "+currentDirection);
     }
 
-    public int getTyres() {
-        return tyres;
+    public String getName() {
+        return name;
     }
 
-    public int getHeadLight() {
-        return headLight;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getSideMirrors() {
-        return sideMirrors;
+    public String getSize() {
+        return size;
     }
 
-    public int getCc() {
-        return cc;
+    public void setSize(String size) {
+        this.size = size;
     }
 
-    public int getGears() {
-        return gears;
+    public int getCurrentVelocity() {
+        return currentVelocity;
+    }
+
+    public void setCurrentVelocity(int currentVelocity) {
+        this.currentVelocity = currentVelocity;
+    }
+
+    public int getCurrentDirection() {
+        return currentDirection;
+    }
+
+    public void setCurrentDirection(int currentDirection) {
+        this.currentDirection = currentDirection;
+    }
+
+    public void stop(){
+        this.currentVelocity = 0;
     }
 }
